@@ -23,3 +23,12 @@ app.use('/api/products', productRoutes);
 app.listen(PORT, () => {
   console.log(`Backend is running on http://localhost:${PORT}`);
 });
+require('dotenv').config();
+
+const mongoose = require('mongoose');
+const jwtSecret = process.env.JWT_SECRET;
+const mongoURI = process.env.MONGO_URI;
+
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error('MongoDB connection error:', err));
