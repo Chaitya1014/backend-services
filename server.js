@@ -42,3 +42,8 @@ dns.resolveSrv('_mongodb._tcp.cluster0.mongodb.net', (err, addresses) => {
     console.log('DNS resolved:', addresses);
   }
 });
+
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, () => {
+  console.log(`Backend is running on http://localhost:${PORT}`);
+});
