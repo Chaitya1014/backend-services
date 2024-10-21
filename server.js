@@ -32,3 +32,13 @@ const mongoURI = process.env.MONGO_URI;
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
+
+const dns = require('dns');
+
+dns.resolveSrv('_mongodb._tcp.cluster0.mongodb.net', (err, addresses) => {
+  if (err) {
+    console.error('DNS resolution error:', err);
+  } else {
+    console.log('DNS resolved:', addresses);
+  }
+});
